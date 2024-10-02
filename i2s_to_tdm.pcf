@@ -1,0 +1,11 @@
+set_io --warn-no-port in_reset K11
+
+set_io --warn-no-port in_mclk G3
+set_io --warn-no-port in_sclk E2
+set_io --warn-no-port in_fclk H5
+set_io --warn-no-port in_din E3
+
+set_io --warn-no-port out_mclk F3
+set_io --warn-no-port out_sclk H3
+set_io --warn-no-port out_fclk F2
+set_io --warn-no-port out_dout H6
