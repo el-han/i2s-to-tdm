@@ -17,6 +17,9 @@
 ################################################################################
 TOPLEVEL_LANG := verilog
 SIM := verilator
+EXTRA_ARGS += --trace --trace-fst --trace-structs
+SIM_CMD_SUFFIX += --trace
+# SIM:= ghdl
 # SIM_ARGS += --vcd=wave.vcd
 # COMPILE_ARGS += --std=08
 
@@ -45,9 +48,9 @@ syn_gowin:
 	yosys -p "read_verilog -sv $(VERILOG_SOURCES); synth_gowin -json i2s_to_tdm.json"
 	nextpnr-gowin --json i2s_to_tdm.json --write i2s_to_tdm.pnr.json --freq 12.288 --device GW1NZ-LV1QN48C6/I5 --family GW1NZ-1 --cst tangnano1k.cst
 
-# flash_gowin:
-# 	gowin_pack -d GW1NZ-1 -o pack.fs i2s_to_tdm.pnr.json
-# 	openFPGALoader -b tangnano1k pack.fs
+flash_gowin:
+	gowin_pack -d GW1NZ-1 -o pack.fs i2s_to_tdm.pnr.json
+	openFPGALoader -b tangnano1k pack.fs
 
 flash:
 	icepack i2s_to_tdm.asc i2s_to_tdm.bin

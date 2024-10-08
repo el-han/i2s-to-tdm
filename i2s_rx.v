@@ -7,13 +7,13 @@ module i2s_rx
 	input wire in_fclk,
 	input wire in_din,
 
-	output logic [G_BITS-1:0] out_frame_left,
-	output logic [G_BITS-1:0] out_frame_right,
+	output logic [G_BITS-1 : 0] out_frame_left,
+	output logic [G_BITS-1 : 0] out_frame_right,
 	output out_frame_strobe
 );
 
-	logic [G_BITS-1:0] frame_left;
-	logic [G_BITS-1:0] frame_right;
+	logic [G_BITS-1 : 0] frame_left;
+	logic [G_BITS-1 : 0] frame_right;
 
 	logic sclk;
 	logic fclk;
@@ -62,8 +62,7 @@ module i2s_rx
 				index <= G_BITS;
 				state <= LEFT;
 			end
-		end
-		else if (state == LEFT) begin
+		end else if (state == LEFT) begin
 			// rising edge of sclk
 			if (sclk_q == 0 && sclk == 1) begin
 				if (index > 0) begin
@@ -77,8 +76,7 @@ module i2s_rx
 				index <= G_BITS;
 				state <= RIGHT;
 			end
-		end
-		else if (state == RIGHT) begin
+		end else if (state == RIGHT) begin
 			// rising edge of sclk
 			if (sclk_q == 0 && sclk == 1) begin
 				if (index > 0) begin

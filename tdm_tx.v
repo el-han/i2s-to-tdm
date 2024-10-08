@@ -13,7 +13,7 @@ module tdm_tx
 	output logic out_dout
 );
 
-	logic [G_BITS-1 : 0] frame;
+	logic [2*G_BITS-1 : 0] frame;
 
 	logic sclk;
 	logic sclk_q;
