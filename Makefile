@@ -1,20 +1,3 @@
-################################################################################
-#                   _________ _
-# |\     /||\     /|\__   __/( (    /|
-# | )   ( || )   ( |   ) (   |  \  ( |
-# | |   | || | _ | |   | |   |   \ | |
-# | |   | || |( )| |   | |   | (\ \) |
-# | |   | || || || |   | |   | | \   |
-# | (___) || () () |___) (___| )  \  |
-# \_______/(_______)\_______/|/    )_)
-#
-# Copyright: 2024 Fraunhofer EAS/IIS
-# Author: Hannes Ellinger
-#         hannes.ellinger@eas.iis.fraunhofer.de
-#         Jakob Wicht
-#         jakob.wicht@eas.iis.fraunhofer.de
-#
-################################################################################
 TOPLEVEL_LANG := verilog
 SIM := verilator
 EXTRA_ARGS += --trace --trace-fst --trace-structs
