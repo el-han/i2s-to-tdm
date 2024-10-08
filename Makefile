@@ -33,7 +33,8 @@ include $(shell cocotb-config --makefiles)/Makefile.sim
 # syn_vhdl_gowin:
 # 	ghdl -a --std=08 i2s_rx.vhd tdm_tx.vhd i2s_to_tdm.vhd
 # 	yosys -m /usr/lib/ghdl_yosys.so -p "ghdl --std=08 i2s_to_tdm; synth_gowin -json i2s_to_tdm.json"
-# 	nextpnr-gowin --json i2s_to_tdm.json --write i2s_to_tdm.pnr.json --freq 12.288 --device GW1NZ-LV1QN48C6/I5 --family GW1NZ-1 --cst tangnano1k.cst
+# 	nextpnr-himbaechel --json i2s_to_tdm.json --write i2s_to_tdm.pnr.json --freq 12.288 --device GW1NZ-LV1QN48C6/I5 --vopt family=GW1NZ-1 --vopt cst=tangnano1k.cst
+# # 	nextpnr-gowin --json i2s_to_tdm.json --write i2s_to_tdm.pnr.json --freq 12.288 --device GW1NZ-LV1QN48C6/I5 --family GW1NZ-1 --cst tangnano1k.cst
 
 syn_vhdl:
 	ghdl -a --std=08 i2s_rx.vhd tdm_tx.vhd i2s_to_tdm.vhd
@@ -46,11 +47,12 @@ syn:
 
 syn_gowin:
 	yosys -p "read_verilog -sv $(VERILOG_SOURCES); synth_gowin -json i2s_to_tdm.json"
-	nextpnr-gowin --json i2s_to_tdm.json --write i2s_to_tdm.pnr.json --freq 12.288 --device GW1NZ-LV1QN48C6/I5 --family GW1NZ-1 --cst tangnano1k.cst
+	nextpnr-himbaechel --json i2s_to_tdm.json --write i2s_to_tdm.pnr.json --sdc i2s_to_tdm.sdc --device GW1NZ-LV1QN48C6/I5 --vopt family=GW1NZ-1 --vopt cst=tangnano1k.cst
+# 	nextpnr-gowin --json i2s_to_tdm.json --write i2s_to_tdm.pnr.json --freq 12.288 --device GW1NZ-LV1QN48C6/I5 --family GW1NZ-1 --cst tangnano1k.cst
 
 flash_gowin:
 	gowin_pack -d GW1NZ-1 -o pack.fs i2s_to_tdm.pnr.json
-	openFPGALoader -b tangnano1k pack.fs
+	openFPGALoader -f -b tangnano1k pack.fs
 
 flash:
 	icepack i2s_to_tdm.asc i2s_to_tdm.bin
