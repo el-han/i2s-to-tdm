@@ -56,7 +56,7 @@ module tdm_tx
 				frame_strobe_internal <= 0;
 				out_fclk <= 1;
 				out_dout <= 0;
-				frame <= frame_1 & frame_2;
+				frame <= {frame_1, frame_2};
 			end else begin
 				out_fclk <= 0;
 				out_dout <= frame[2*G_BITS-1];
