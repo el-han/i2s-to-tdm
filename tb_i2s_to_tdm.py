@@ -41,9 +41,9 @@ async def test_i2s_rx(dut):
     cocotb.start_soon(clocks(dut))
 
     # reset
-    dut.in_reset.value = 1
+    # dut.in_reset.value = 1
     await Timer(20 * CLK_PERIOD_NS, units="ns")
-    dut.in_reset.value = 0
+    # dut.in_reset.value = 0
 
     await FallingEdge(dut.in_fclk)
 

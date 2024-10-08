@@ -1,4 +1,12 @@
-set_io --warn-no-port in_reset K11
+# GPIO1
+#                                                  +---+
+# +----------+----------+----------+----------+----+   +----
+# | in_mclk  | in_sclk  | in_fclk  | in_din   |
+# +----------+----------+----------+----------+-------------  ...
+# | out_mclk | out_sclk | out_fclk | out_dout |
+# +----------+----------+----------+----------+-------------
+
+# set_io --warn-no-port in_reset K11  # BUT1
 
 set_io --warn-no-port in_mclk G3
 set_io --warn-no-port in_sclk E2
