@@ -32,6 +32,10 @@ i2s_to_tdm.fs: i2s_to_tdm.pnr.json
 flash: i2s_to_tdm.fs
 	openFPGALoader -f -b tangnano1k i2s_to_tdm.fs
 
+.PHONY: flash-sram
+flash-sram: i2s_to_tdm.fs
+	openFPGALoader -m -b tangnano1k i2s_to_tdm.fs
+
 .PHONY: clean
 cleanup:
 	rm i2s_to_tdm.fs
