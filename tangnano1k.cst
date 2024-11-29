@@ -1,18 +1,29 @@
 
-IO_LOC "in_fclk" 22;
-IO_PORT "in_fclk" IO_TYPE=LVCMOS33;
-IO_LOC "in_din" 18;
-IO_PORT "in_din" IO_TYPE=LVCMOS33;
-IO_LOC "in_sclk" 17;
-IO_PORT "in_sclk" IO_TYPE=LVCMOS33;
-IO_LOC "in_mclk" 16;
+//              ...
+// 23 |                      | 42
+// 22 | in_mclk     out_mclk | 35
+// 18 | in_sclk     out_sclk | 34
+// 17 | in_din      out_fclk | 20
+// 16 | in_fclk     out_dout | 19
+// 15 |                      | 29
+// 27 |                      | 30
+// 28 |                      | 31
+//    +----------------------+
+
+IO_LOC "in_mclk" 22;
 IO_PORT "in_mclk" IO_TYPE=LVCMOS33;
+IO_LOC "in_sclk" 18;
+IO_PORT "in_sclk" IO_TYPE=LVCMOS33;
+IO_LOC "in_din" 17;
+IO_PORT "in_din" IO_TYPE=LVCMOS33;
+IO_LOC "in_fclk" 16;
+IO_PORT "in_fclk" IO_TYPE=LVCMOS33;
 
 IO_LOC "out_mclk" 35;
 IO_PORT "out_mclk" IO_TYPE=LVCMOS33 DRIVE=8;
-IO_LOC "out_fclk" 34;
-IO_PORT "out_fclk" IO_TYPE=LVCMOS33 DRIVE=8;
-IO_LOC "out_sclk" 20;
+IO_LOC "out_sclk" 34;
 IO_PORT "out_sclk" IO_TYPE=LVCMOS33 DRIVE=8;
+IO_LOC "out_fclk" 20;
+IO_PORT "out_fclk" IO_TYPE=LVCMOS33 DRIVE=8;
 IO_LOC "out_dout" 19;
 IO_PORT "out_dout" IO_TYPE=LVCMOS33 DRIVE=8;

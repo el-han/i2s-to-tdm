@@ -21,7 +21,12 @@ i2s_to_tdm.json: $(VERILOG_SOURCES)
 .PHONY: pnr
 pnr: i2s_to_tdm.pnr.json
 i2s_to_tdm.pnr.json: i2s_to_tdm.json tangnano1k.cst i2s_to_tdm.sdc
-	nextpnr-himbaechel --json i2s_to_tdm.json --write i2s_to_tdm.pnr.json --sdc i2s_to_tdm.sdc --device $(DEVICE) --vopt family=$(FAMILY) --vopt cst=tangnano1k.cst
+	nextpnr-himbaechel --json i2s_to_tdm.json \
+	                   --write i2s_to_tdm.pnr.json \
+	                   --sdc i2s_to_tdm.sdc \
+	                   --device $(DEVICE) \
+	                   --vopt family=$(FAMILY) \
+	                   --vopt cst=tangnano1k.cst
 
 .PHONY: pack
 pack: i2s_to_tdm.fs
